@@ -1,0 +1,46 @@
+{
+  "name": "gulp-ftp",
+  "version": "0.0.0",
+  "description": "Upload files to an FTP-server",
+  "license": "MIT",
+  "repository": "sindresorhus/gulp-ftp",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "gulpplugin",
+    "ftp",
+    "jsftp",
+    "file",
+    "files",
+    "transfer",
+    "protocol",
+    "server",
+    "client",
+    "upload",
+    "deploy",
+    "deployment"
+  ],
+  "dependencies": {
+    "event-stream": "~3.0.20",
+    "gulp-util": "~2.2.0",
+    "parents": "0.0.2",
+    "jsftp": "~1.2.1",
+    "jsftp-mkdirp": "~0.1.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "ftp-test-server": "0.0.1"
+  }
+}
