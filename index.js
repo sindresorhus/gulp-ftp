@@ -18,19 +18,24 @@ module.exports = function (options) {
 	var stream = es.map(function (file, cb) {
 		// have to create a new connection for each file otherwise they conflict
 		var ftp = new JSFtp(options);
+		console.log(file.path);
 		var relativePath = file.path.replace(file.cwd + '/', '');
 		var finalRemotePath = path.join('/', remotePath, relativePath);
 
+		ftp.keepAlive();
 		ftp.mkdirp(path.dirname(finalRemotePath), function (err) {
 			if (err) {
 				return cb(err);
 			}
 
+			console.log('after mkdirp');
+			ftp.keepAlive();
 			ftp.put(file.contents, finalRemotePath, function (err) {
 				if (err) {
 					return cb(err);
 				}
 
+				console.log('after put');
 				fileCount++;
 				ftp.raw.quit();
 				cb(null, file);
