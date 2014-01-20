@@ -13,7 +13,12 @@ module.exports = function (options) {
 
 	var fileCount = 0;
 	var remotePath = options.remotePath || '';
+  var localPath = options.localPath || '';
+  var logFiles = options.logFiles === false ? false : true;
+
 	delete options.remotePath;
+  delete options.localPath;
+  delete options.logFiles;
 
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
@@ -29,7 +34,8 @@ module.exports = function (options) {
 		// have to create a new connection for each file otherwise they conflict
 		var ftp = new JSFtp(options);
 		var relativePath = file.path.replace(file.cwd + '/', '');
-		var finalRemotePath = path.join('/', remotePath, relativePath);
+    var localRelativePath = file.path.replace(path.join(file.cwd, localPath), '');
+		var finalRemotePath = path.join('/', remotePath, localRelativePath);
 
 		ftp.mkdirp(path.dirname(finalRemotePath), function (err) {
 			if (err) {
@@ -42,6 +48,13 @@ module.exports = function (options) {
 					this.emit('error', new gutil.PluginError('gulp-ftp', err));
 					return cb();
 				}
+
+        if (logFiles) {
+          gutil.log('gulp-ftp:', gutil.colors.green('Uploaded: ') + 
+                                 relativePath +
+                                 gutil.colors.green(' => ') + 
+                                 finalRemotePath);
+        }
 
 				fileCount++;
 				ftp.raw.quit();
