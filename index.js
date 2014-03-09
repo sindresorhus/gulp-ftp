@@ -30,16 +30,17 @@ module.exports = function (options) {
 		var ftp = new JSFtp(options);
 		var relativePath = file.path.replace(file.cwd + '/', '');
 		var finalRemotePath = path.join('/', remotePath, relativePath);
-
+		
+		var self = this;
 		ftp.mkdirp(path.dirname(finalRemotePath), function (err) {
 			if (err) {
-				this.emit('error', new gutil.PluginError('gulp-ftp', err));
+				self.emit('error', new gutil.PluginError('gulp-ftp', err));
 				return cb();
 			}
 
 			ftp.put(file.contents, finalRemotePath, function (err) {
 				if (err) {
-					this.emit('error', new gutil.PluginError('gulp-ftp', err));
+					self.emit('error', new gutil.PluginError('gulp-ftp', err));
 					return cb();
 				}
 
