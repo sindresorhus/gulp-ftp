@@ -1,6 +1,6 @@
 {
   "name": "gulp-ftp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Upload files to an FTP-server",
   "license": "MIT",
   "repository": "sindresorhus/gulp-ftp",
