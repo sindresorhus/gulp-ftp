@@ -37,7 +37,8 @@
     "through2": "~0.4.0",
     "parents": "0.0.2",
     "jsftp": "~1.2.1",
-    "jsftp-mkdirp": "~0.1.0"
+    "jsftp-mkdirp": "~0.1.0",
+    "filesize": "^2.0.3"
   },
   "devDependencies": {
     "mocha": "*",
