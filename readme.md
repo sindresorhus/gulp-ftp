@@ -64,6 +64,13 @@ The remote path to upload too.
 
 Doesn't have to exist as [jsftp-mkdirp](https://github.com/sindresorhus/jsftp-mkdirp) is used.
 
+#### options.log
+
+Type: `Boolean`
+Default: `false`
+
+Logs files uploaded to console
+
 
 ## License
 

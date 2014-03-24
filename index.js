@@ -3,6 +3,7 @@ var path = require('path');
 var gutil = require('gulp-util');
 var through = require('through2');
 var JSFtp = require('jsftp');
+var getFileSize = require("filesize");
 
 JSFtp = require('jsftp-mkdirp')(JSFtp);
 
@@ -42,6 +43,12 @@ module.exports = function (options) {
 				if (err) {
 					self.emit('error', new gutil.PluginError('gulp-ftp', err));
 					return cb();
+				}
+
+				var filesize = file.stat ? getFileSize(file.stat.size) : getFileSize(Buffer.byteLength(String(file.contents)));
+
+				if (options.log) {
+					gutil.log('Uploaded', gutil.colors.cyan(relativePath), ':', gutil.colors.magenta(filesize));
 				}
 
 				fileCount++;
