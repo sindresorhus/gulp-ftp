@@ -26,12 +26,13 @@ module.exports = function (options) {
 			return cb();
 		}
 
+		var self = this;
+
 		// have to create a new connection for each file otherwise they conflict
 		var ftp = new JSFtp(options);
-		var relativePath = file.path.replace(file.cwd + path.sep, '');
-		var finalRemotePath = path.join('/', remotePath, relativePath).replace(/\\/g, '/');
 
-		var self = this;
+		var finalRemotePath = path.join('/', remotePath, file.relative).replace(/\\/g, '/');
+
 		ftp.mkdirp(path.dirname(finalRemotePath).replace(/\\/g, '/'), function (err) {
 			if (err) {
 				self.emit('error', new gutil.PluginError('gulp-ftp', err));

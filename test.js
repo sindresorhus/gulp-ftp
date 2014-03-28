@@ -25,10 +25,6 @@ after(function () {
 });
 
 it('should upload files to FTP-server', function (cb) {
-	var base = __dirname + '/fixture/';
-	var file1 = base + 'fixture.txt';
-	var file2 = base + 'fixture2.txt';
-
 	var stream = ftp({
 		host: 'localhost',
 		port: 3334,
@@ -37,25 +33,25 @@ it('should upload files to FTP-server', function (cb) {
 	});
 
 	setTimeout(function () {
-		assert(fs.existsSync(file1));
-		assert(fs.existsSync(file2));
-		fs.unlinkSync(file1);
-		fs.unlinkSync(file2);
-		fs.rmdirSync(base);
+		assert(fs.existsSync('fixture/fixture.txt'));
+		assert(fs.existsSync('fixture/fixture2.txt'));
+		fs.unlinkSync('fixture/fixture.txt');
+		fs.unlinkSync('fixture/fixture2.txt');
+		fs.rmdirSync('fixture');
 		cb();
 	}, 500);
 
 	stream.write(new gutil.File({
 		cwd: __dirname,
-		base: base,
-		path: file1,
-		contents: new Buffer('hello world')
+		base: __dirname,
+		path: __dirname + '/fixture/fixture.txt',
+		contents: new Buffer('unicorns')
 	}));
 
 	stream.write(new gutil.File({
 		cwd: __dirname,
-		base: base,
-		path: file2,
-		contents: new Buffer('hello world')
+		base: __dirname,
+		path: __dirname + '/fixture/fixture2.txt',
+		contents: new Buffer('unicorns')
 	}));
 });

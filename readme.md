@@ -1,4 +1,4 @@
-# [gulp](https://github.com/wearefractal/gulp)-ftp [![Build Status](https://secure.travis-ci.org/sindresorhus/gulp-ftp.png?branch=master)](http://travis-ci.org/sindresorhus/gulp-ftp)
+# [gulp](http://gulpjs.com)-ftp [![Build Status](https://travis-ci.org/sindresorhus/gulp-ftp.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-ftp)
 
 > Upload files to an FTP-server
 
@@ -7,14 +7,12 @@ Useful for uploading and deploying things.
 
 ## Install
 
-Install with [npm](https://npmjs.org/package/gulp-ftp)
-
-```
-npm install --save-dev gulp-ftp
+```bash
+$ npm install --save-dev gulp-ftp
 ```
 
 
-## Example
+## Usage
 
 ```js
 var gulp = require('gulp');
@@ -67,4 +65,4 @@ Doesn't have to exist as [jsftp-mkdirp](https://github.com/sindresorhus/jsftp-mk
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)

@@ -33,14 +33,14 @@
     "deployment"
   ],
   "dependencies": {
-    "gulp-util": "~2.2.0",
-    "through2": "~0.4.0",
-    "parents": "0.0.2",
-    "jsftp": "~1.2.1",
-    "jsftp-mkdirp": "~0.1.0"
+    "gulp-util": "^2.2.0",
+    "through2": "^0.4.0",
+    "parents": "^0.0.2",
+    "jsftp": "^1.2.1",
+    "jsftp-mkdirp": "^0.1.0"
   },
   "devDependencies": {
     "mocha": "*",
-    "ftp-test-server": "0.0.1"
+    "ftp-test-server": "^0.0.1"
   }
 }
