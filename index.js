@@ -2,11 +2,14 @@
 var path = require('path');
 var gutil = require('gulp-util');
 var through = require('through2');
+var assign = require('object-assign');
 var JSFtp = require('jsftp');
 
 JSFtp = require('jsftp-mkdirp')(JSFtp);
 
 module.exports = function (options) {
+	options = assign({}, options);
+
 	if (options.host === undefined) {
 		throw new gutil.PluginError('gulp-ftp', '`host` required.');
 	}

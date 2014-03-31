@@ -34,10 +34,11 @@
   ],
   "dependencies": {
     "gulp-util": "^2.2.0",
-    "through2": "^0.4.0",
-    "parents": "^0.0.2",
     "jsftp": "^1.2.1",
-    "jsftp-mkdirp": "^0.1.0"
+    "jsftp-mkdirp": "^0.1.0",
+    "object-assign": "^0.2.1",
+    "parents": "^0.0.2",
+    "through2": "^0.4.0"
   },
   "devDependencies": {
     "mocha": "*",
