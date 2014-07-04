@@ -33,12 +33,12 @@
     "deployment"
   ],
   "dependencies": {
-    "gulp-util": "^2.2.0",
+    "gulp-util": "^2.2.19",
     "jsftp": "^1.3.0",
     "jsftp-mkdirp": "^0.1.0",
     "object-assign": "^0.3.1",
     "parents": "^0.0.2",
-    "through2": "^0.4.0"
+    "through2": "^0.5.1"
   },
   "devDependencies": {
     "ftp-test-server": "^0.0.1",
