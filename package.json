@@ -38,7 +38,8 @@
     "jsftp-mkdirp": "^0.1.0",
     "object-assign": "^0.3.1",
     "parents": "^0.0.2",
-    "through2": "^0.5.1"
+    "through2": "^0.5.1",
+    "chalk": "^0.4.0"
   },
   "devDependencies": {
     "ftp-test-server": "^0.0.1",
