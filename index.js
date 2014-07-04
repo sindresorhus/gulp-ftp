@@ -4,11 +4,13 @@ var gutil = require('gulp-util');
 var through = require('through2');
 var assign = require('object-assign');
 var JSFtp = require('jsftp');
+var chalk = require('chalk');
 
 JSFtp = require('jsftp-mkdirp')(JSFtp);
 
 module.exports = function (options) {
 	options = assign({}, options);
+	options.verbose = process.argv.indexOf('--verbose') !== -1;
 
 	if (options.host === undefined) {
 		throw new gutil.PluginError('gulp-ftp', '`host` required.');
@@ -53,6 +55,10 @@ module.exports = function (options) {
 				cb();
 			});
 		});
+
+		if (options.verbose) {
+			gutil.log('gulp-ftp:', chalk.green('✔ ') + file.relative);
+		}
 
 		this.push(file);
 	}, function (cb) {
