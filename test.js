@@ -2,8 +2,8 @@
 var assert = require('assert');
 var fs = require('fs');
 var gutil = require('gulp-util');
-var ftp = require('./index');
 var Server = require('ftp-test-server');
+var ftp = require('./');
 var mockServer;
 
 before(function (done) {

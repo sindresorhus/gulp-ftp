@@ -40,13 +40,13 @@ module.exports = function (options) {
 
 		ftp.mkdirp(path.dirname(finalRemotePath).replace(/\\/g, '/'), function (err) {
 			if (err) {
-				self.emit('error', new gutil.PluginError('gulp-ftp', err));
+				self.emit('error', new gutil.PluginError('gulp-ftp', err, {fileName: file.path}));
 				return cb();
 			}
 
 			ftp.put(file.contents, finalRemotePath, function (err) {
 				if (err) {
-					self.emit('error', new gutil.PluginError('gulp-ftp', err));
+					self.emit('error', new gutil.PluginError('gulp-ftp', err, {fileName: file.path}));
 					return cb();
 				}
 
