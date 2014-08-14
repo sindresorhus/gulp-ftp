@@ -7,7 +7,7 @@ Useful for uploading and deploying things.
 
 ## Install
 
-```bash
+```sh
 $ npm install --save-dev gulp-ftp
 ```
 
@@ -36,26 +36,26 @@ gulp.task('default', function () {
 #### options.host
 
 *Required*  
-Type: `String`
+Type: `string`
 
 #### options.port
 
-Type: `Number`  
+Type: `number`  
 Default: `21`
 
 #### options.user
 
-Type: `String`  
+Type: `string`  
 Default: `'anonymous'`
 
 #### options.pass
 
-Type: `String`  
+Type: `string`  
 Default: `'@anonymous'`
 
 #### options.remotePath
 
-Type: `String`  
+Type: `string`  
 Default: `'/'`
 
 The remote path to upload too.
@@ -65,4 +65,4 @@ Doesn't have to exist as [jsftp-mkdirp](https://github.com/sindresorhus/jsftp-mk
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com)

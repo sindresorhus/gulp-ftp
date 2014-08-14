@@ -23,12 +23,14 @@ module.exports = function (options) {
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
 			this.push(file);
-			return cb();
+			cb();
+			return;
 		}
 
 		if (file.isStream()) {
 			this.emit('error', new gutil.PluginError('gulp-ftp', 'Streaming not supported'));
-			return cb();
+			cb();
+			return;
 		}
 
 		var self = this;
@@ -41,13 +43,15 @@ module.exports = function (options) {
 		ftp.mkdirp(path.dirname(finalRemotePath).replace(/\\/g, '/'), function (err) {
 			if (err) {
 				self.emit('error', new gutil.PluginError('gulp-ftp', err, {fileName: file.path}));
-				return cb();
+				cb();
+				return;
 			}
 
 			ftp.put(file.contents, finalRemotePath, function (err) {
 				if (err) {
 					self.emit('error', new gutil.PluginError('gulp-ftp', err, {fileName: file.path}));
-					return cb();
+					cb();
+					return;
 				}
 
 				fileCount++;
