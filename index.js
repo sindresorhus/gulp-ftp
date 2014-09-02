@@ -13,7 +13,7 @@ module.exports = function (options) {
 	options.verbose = process.argv.indexOf('--verbose') !== -1;
 
 	if (options.host === undefined) {
-		throw new gutil.PluginError('gulp-ftp', '`host` required.');
+		throw new gutil.PluginError('gulp-ftp', '`host` required');
 	}
 
 	var fileCount = 0;
@@ -22,14 +22,12 @@ module.exports = function (options) {
 
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
-			this.push(file);
-			cb();
+			cb(null, file);
 			return;
 		}
 
 		if (file.isStream()) {
-			this.emit('error', new gutil.PluginError('gulp-ftp', 'Streaming not supported'));
-			cb();
+			cb(new gutil.PluginError('gulp-ftp', 'Streaming not supported'));
 			return;
 		}
 
@@ -42,29 +40,25 @@ module.exports = function (options) {
 
 		ftp.mkdirp(path.dirname(finalRemotePath).replace(/\\/g, '/'), function (err) {
 			if (err) {
-				self.emit('error', new gutil.PluginError('gulp-ftp', err, {fileName: file.path}));
-				cb();
+				cb(new gutil.PluginError('gulp-ftp', err, {fileName: file.path}));
 				return;
 			}
 
 			ftp.put(file.contents, finalRemotePath, function (err) {
 				if (err) {
-					self.emit('error', new gutil.PluginError('gulp-ftp', err, {fileName: file.path}));
-					cb();
+					cb(new gutil.PluginError('gulp-ftp', err, {fileName: file.path}));
 					return;
 				}
 
 				fileCount++;
 				ftp.raw.quit();
-				cb();
+				cb(null, file);
 			});
 		});
 
 		if (options.verbose) {
 			gutil.log('gulp-ftp:', chalk.green('✔ ') + file.relative);
 		}
-
-		this.push(file);
 	}, function (cb) {
 		if (fileCount > 0) {
 			gutil.log('gulp-ftp:', gutil.colors.green(fileCount, fileCount === 1 ? 'file' : 'files', 'uploaded successfully'));
