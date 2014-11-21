@@ -21,7 +21,9 @@ module.exports = function (options) {
 	var remotePath = options.remotePath || '';
 	delete options.remotePath;
 
-	return through.obj(function (file, enc, cb) {
+	return through.obj({
+		highWaterMark: 200
+	}, function (file, enc, cb) {
 		if (file.isNull()) {
 			cb(null, file);
 			return;
