@@ -10,7 +10,8 @@ JSFtp = require('jsftp-mkdirp')(JSFtp);
 
 module.exports = function (options) {
 	options = assign({}, options);
-	options.verbose = process.argv.indexOf('--verbose') !== -1;
+	// respect directly passed option "verbose"
+	options.verbose = options.verbose || (process.argv.indexOf('--verbose') !== -1);
 
 	if (options.host === undefined) {
 		throw new gutil.PluginError('gulp-ftp', '`host` required');
