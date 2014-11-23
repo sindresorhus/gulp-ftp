@@ -16,6 +16,7 @@ $ npm install --save-dev gulp-ftp
 
 ```js
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var ftp = require('gulp-ftp');
 
 gulp.task('default', function () {
@@ -24,7 +25,11 @@ gulp.task('default', function () {
 			host: 'website.com',
 			user: 'johndoe',
 			pass: '1234'
-		}));
+		}))
+		// you need to have some kind of stream after gulp-ftp to make sure it's flushed
+		// this can be a gulp plugin, gulp.dest, or any kind of stream
+		// here we use a passthrough stream
+		.pipe(gutil.noop());
 });
 ```
 
