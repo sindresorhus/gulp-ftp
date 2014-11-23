@@ -1,4 +1,4 @@
-# [gulp](http://gulpjs.com)-ftp [![Build Status](https://travis-ci.org/sindresorhus/gulp-ftp.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-ftp)
+# gulp [![Build Status](https://travis-ci.org/sindresorhus/gulp-ftp.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-ftp)
 
 > Upload files to an FTP-server
 
@@ -65,7 +65,7 @@ Default: `'/'`
 
 The remote path to upload too.
 
-Doesn't have to exist as [jsftp-mkdirp](https://github.com/sindresorhus/jsftp-mkdirp) is used.
+Nonexistent directories will be created for you.
 
 
 ## License
