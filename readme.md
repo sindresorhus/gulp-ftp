@@ -1,4 +1,4 @@
-# gulp [![Build Status](https://travis-ci.org/sindresorhus/gulp-ftp.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-ftp)
+# gulp-ftp [![Build Status](https://travis-ci.org/sindresorhus/gulp-ftp.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-ftp)
 
 > Upload files to an FTP-server
 
@@ -7,7 +7,7 @@ Useful for uploading and deploying things.
 
 ## Install
 
-```sh
+```
 $ npm install --save-dev gulp-ftp
 ```
 
