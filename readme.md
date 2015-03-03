@@ -67,6 +67,10 @@ The remote path to upload too.
 
 Nonexistent directories will be created for you.
 
+#### options.verbose
+
+Type: `boolean`  
+Default: `false`
 
 ## License
 
