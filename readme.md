@@ -1,5 +1,7 @@
 # gulp-ftp [![Build Status](https://travis-ci.org/sindresorhus/gulp-ftp.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-ftp)
 
+## Deprecated in favor of [`vinyl-ftp`](https://github.com/morris/vinyl-ftp).
+
 > Upload files to an FTP-server
 
 Useful for uploading and deploying things.
