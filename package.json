@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "ftp-test-server": "0.0.2",
-    "mocha": "*"
+    "mocha": "*",
+    "path-exists": "^1.0.0"
   }
 }

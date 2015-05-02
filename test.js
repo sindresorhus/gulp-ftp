@@ -3,6 +3,7 @@ var assert = require('assert');
 var fs = require('fs');
 var gutil = require('gulp-util');
 var Server = require('ftp-test-server');
+var pathExists = require('path-exists');
 var ftp = require('./');
 var mockServer;
 
@@ -33,8 +34,8 @@ it('should upload files to FTP-server', function (cb) {
 	});
 
 	setTimeout(function () {
-		assert(fs.existsSync('fixture/fixture.txt'));
-		assert(fs.existsSync('fixture/fixture2.txt'));
+		assert(pathExists.sync('fixture/fixture.txt'));
+		assert(pathExists.sync('fixture/fixture2.txt'));
 		fs.unlinkSync('fixture/fixture.txt');
 		fs.unlinkSync('fixture/fixture2.txt');
 		fs.rmdirSync('fixture');
