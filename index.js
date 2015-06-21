@@ -5,6 +5,7 @@ var through = require('through2');
 var assign = require('object-assign');
 var JSFtp = require('jsftp');
 var chalk = require('chalk');
+var plur = require('plur');
 
 JSFtp = require('jsftp-mkdirp')(JSFtp);
 
@@ -30,8 +31,6 @@ module.exports = function (options) {
 			cb(new gutil.PluginError('gulp-ftp', 'Streaming not supported'));
 			return;
 		}
-
-		var self = this;
 
 		// have to create a new connection for each file otherwise they conflict
 		var ftp = new JSFtp(options);
@@ -61,7 +60,7 @@ module.exports = function (options) {
 		}
 	}, function (cb) {
 		if (fileCount > 0) {
-			gutil.log('gulp-ftp:', gutil.colors.green(fileCount, fileCount === 1 ? 'file' : 'files', 'uploaded successfully'));
+			gutil.log('gulp-ftp:', gutil.colors.green(fileCount, plur('file', fileCount), 'uploaded successfully'));
 		} else {
 			gutil.log('gulp-ftp:', gutil.colors.yellow('No files uploaded'));
 		}

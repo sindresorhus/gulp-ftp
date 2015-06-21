@@ -37,9 +37,10 @@
     "gulp-util": "^3.0.0",
     "jsftp": "^1.3.0",
     "jsftp-mkdirp": "^1.0.0",
-    "object-assign": "^2.0.0",
+    "object-assign": "^3.0.0",
     "parents": "^1.0.0",
-    "through2": "^0.6.1"
+    "plur": "^1.0.0",
+    "through2": "^2.0.0"
   },
   "devDependencies": {
     "ftp-test-server": "0.0.2",
