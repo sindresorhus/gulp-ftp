@@ -19,7 +19,6 @@ module.exports = function (options) {
 
 	var fileCount = 0;
 	var remotePath = options.remotePath || '';
-	delete options.remotePath;
 
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
@@ -33,7 +32,12 @@ module.exports = function (options) {
 		}
 
 		// have to create a new connection for each file otherwise they conflict
-		var ftp = new JSFtp(options);
+		var ftp = new JSFtp({
+			host: options.host,
+			port: options.port,
+			user: options.user,
+			pass: options.pass
+		});
 
 		var finalRemotePath = path.join('/', remotePath, file.relative).replace(/\\/g, '/');
 
