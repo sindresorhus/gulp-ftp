@@ -11,7 +11,8 @@ JSFtp = require('jsftp-mkdirp')(JSFtp);
 
 module.exports = function (options) {
 	options = assign({}, options);
-	options.verbose = process.argv.indexOf('--verbose') !== -1;
+	// respect directly passed option "verbose"
+	options.verbose = options.verbose || (process.argv.indexOf('--verbose') !== -1);
 
 	if (options.host === undefined) {
 		throw new gutil.PluginError('gulp-ftp', '`host` required');
@@ -21,7 +22,9 @@ module.exports = function (options) {
 	var remotePath = options.remotePath || '';
 	delete options.remotePath;
 
-	return through.obj(function (file, enc, cb) {
+	return through.obj({
+		highWaterMark: 200
+	}, function (file, enc, cb) {
 		if (file.isNull()) {
 			cb(null, file);
 			return;
