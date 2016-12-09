@@ -65,7 +65,17 @@ Default: `'@anonymous'`
 Type: `string`  
 Default: `'/'`
 
-The remote path to upload too.
+The remote path to upload into.
+
+#### options.verbose
+
+Type: `boolean`  
+Default: `false`
+
+Display upload progress. You can also use **--verbose** argument:
+ `$ gulp upload --verbose`
+
+
 
 Nonexistent directories will be created for you.
 
